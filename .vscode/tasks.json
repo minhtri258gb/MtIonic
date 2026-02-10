@@ -1,0 +1,41 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "options": {
+    "env": {
+      "ANDROID_HOME": "C:/Users/Admin/AppData/Local/Android/Sdk",
+      "PATH": "D:/Apps/Java/jdk-25/bin;${env:PATH}"
+    }
+  },
+  "tasks": [
+    {
+      "label": "Build Src",
+      "type": "shell",
+      "command": "npx vite build"
+    },
+    {
+      "label": "Start",
+      "type": "shell",
+      "command": "npx vite"
+    },
+    {
+      "label": "Cap Sync",
+      "type": "shell",
+      "command": "npx cap sync"
+    },
+    {
+      "label": "Build APK",
+      "type": "shell",
+      "command": "gradlew assembleDebug",
+      "options": {
+        "cwd": "android"
+      }
+    },
+    {
+      "label": "Info APK",
+      "type": "shell",
+      "command": "C:/Users/Admin/AppData/Local/Android/Sdk/build-tools/36.0.0/aapt.exe d badging ./android/app/build/outputs/apk/debug/app-debug.apk"
+    }
+  ]
+}
