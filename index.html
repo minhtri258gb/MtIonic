@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>MtIonic</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta
+    name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+
+  <script type="module">
+    import './src/pages/HomePage.js';
+    import './src/pages/NewPage.js';
+    import './src/pages/MapPage.js';
+    import './src/pages/DevPage.js';
+  </script>
+</head>
+<body>
+  <ion-app>
+    <ion-router>
+      <ion-route url="/" component="home-page"></ion-route>
+      <ion-route url="/new" component="new-page"></ion-route>
+      <ion-route url="/map" component="map-page"></ion-route>
+      <ion-route url="/dev" component="dev-page"></ion-route>
+    </ion-router>
+    <ion-router-outlet></ion-router-outlet>
+  </ion-app>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
+
+
