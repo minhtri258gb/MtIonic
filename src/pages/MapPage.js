@@ -1,4 +1,4 @@
-import { Geolocation } from '@capacitor/geolocation';
+import { pwaService } from '/src/services/index.js';
 
 class MapPage extends HTMLElement {
 
@@ -18,8 +18,6 @@ class MapPage extends HTMLElement {
 			<ion-content class="ion-padding">
 				<h2>Welcome to the new page!</h2>
 
-				<ion-button id="btnCheck">Check</ion-button>
-				<br>
 				<ion-button id="btnPermission">Permission</ion-button>
 				<br>
 				<ion-button id="btnGetLoc">Get Location</ion-button>
@@ -31,24 +29,17 @@ class MapPage extends HTMLElement {
 		customElements.whenDefined('ion-content').then(() => {
 
 			// Add scroll functionality
-			const btnCheck = this.querySelector('#btnCheck');
 			const btnPermission = this.querySelector('#btnPermission');
 			const btnGetLoc = this.querySelector('#btnGetLoc');
 			const content = this.querySelector('ion-content');
 
 			if (content) {
-				btnCheck.addEventListener('click', async () => {
-					let permissionStatus = await Geolocation.checkPermissions();
-					console.log('permissiobtnChecknStatus', permissionStatus);
-				});
 				btnPermission.addEventListener('click', async () => {
-					let permissionStatus = await Geolocation.requestPermissions();
-					console.log('btnPermission', permissionStatus);
+					const permissionStatus = await pwaService.geolocationPermission();
+					console.log('Trạng thái quyền:', permissionStatus.state);
 				});
 				btnGetLoc.addEventListener('click', async () => {
-					let position = await Geolocation.getCurrentPosition({
-						enableHighAccuracy: true,
-					});
+					let position = await pwaService.geolocationGet();
 					let lat = position.coords?.latitude;
 					let lng = position.coords?.longitude || 0;
 					console.log('getLoc', { lat, lng });

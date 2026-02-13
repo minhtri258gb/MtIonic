@@ -2,16 +2,20 @@
 # Info
 Src Mobile Ionic + Capacitor
 # Startup
-> npm i
-> npx cap init
-> npx cap add android
-> npx vite build
-> npx cap sync
+> npm i  
+> npx cap init  
+> npx cap add android  
+> npx vite build  
+> npx cap sync  
 # Struct
 ## Home
-- Trang chủ /
+- Trang chủ
+- link: /
 ## Map
-- Bản đồ /map
+- Bản đồ
+- link: /map
+- permission: GEOLOCATION
 ## Dev
-- Phat triển /dev
+- Phát triển
+- link: /dev
 # End

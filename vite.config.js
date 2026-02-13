@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
 	optimizeDeps: {
@@ -15,12 +16,22 @@ export default defineConfig({
 	},
 	plugins: [
 		viteStaticCopy({
-			targets: [
-				{
-					src: 'node_modules/@ionic/core/dist/ionic/*',
-					dest: '',
-				},
-			],
+			targets: [{ src: 'node_modules/@ionic/core/dist/ionic/*', dest: '' }],
+		}),
+		VitePWA({
+			registerType: 'autoUpdate',
+			includeAssets: ['vite.svg'],
+			manifest: {
+				name: 'MT Ionic PWA',
+				short_name: 'MtIonic',
+				icons: [
+					{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+					{ src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' }
+				]
+			},
+			devOptions: {
+				enabled: true // Bật chế độ debug Service Worker khi chạy lệnh dev
+			}
 		}),
 	],
 });

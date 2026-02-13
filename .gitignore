@@ -2,6 +2,7 @@
 # Folder
 /node_modules
 /dist
+/dev-dist
 /android
 
 # File Type

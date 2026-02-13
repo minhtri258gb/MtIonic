@@ -1,0 +1,1 @@
+export { default as pwaService } from './pwa.service';

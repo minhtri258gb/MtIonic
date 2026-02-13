@@ -7,6 +7,9 @@
   await import(/* @vite-ignore */ ionicPath);
 })();
 
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+defineCustomElements(window);
+
 // Core CSS required for Ionic components to work properly
 import '@ionic/core/css/core.css';
 
@@ -26,7 +29,6 @@ import '@ionic/core/css/display.css';
 // Icon imports
 import { addIcons } from 'ionicons';
 import { heart, logoIonic } from 'ionicons/icons';
-
 addIcons({ heart, logoIonic });
 
 // import './style.css'
@@ -53,3 +55,10 @@ addIcons({ heart, logoIonic });
 // `
 
 // setupCounter(document.querySelector('#counter'))
+
+// Đăng ký Service Worker
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker.register('/sw.js');
+//   });
+// }
