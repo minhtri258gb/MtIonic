@@ -85,6 +85,11 @@ class PWAService {
 		return false;
 	}
 
+	// Local Storage
+	setLocalStorage(key, value) {
+		localStorage.setItem(key, value);
+	}
+
 	// Camera
 	cameraPermission() {
 
@@ -166,5 +171,12 @@ class PWAService {
 		
 		return { value: Math.round(distance * 100) / 100 };
 	}
+
+	// Push Notification
+	async notificationSubscribe(vapIdPublicKey) {
+		const registration = await navigator.serviceWorker.ready;
+		return await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: vapIdPublicKey}); // subscription
+	}
 };
-export default new PWAService(); // singleton
+const pwaService = new PWAService();
+export default pwaService;

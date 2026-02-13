@@ -1,4 +1,4 @@
-import { pwaService } from '/src/services/index.js';
+import pwaService from '/src/services/pwa.service';
 
 class MapPage extends HTMLElement {
 

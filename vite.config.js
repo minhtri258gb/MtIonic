@@ -20,6 +20,9 @@ export default defineConfig({
 		}),
 		VitePWA({
 			registerType: 'autoUpdate',
+			strategies: 'injectManifest',
+			srcDir: 'src',
+			filename: 'sw.js',
 			includeAssets: ['vite.svg'],
 			manifest: {
 				name: 'MT Ionic PWA',
@@ -30,7 +33,8 @@ export default defineConfig({
 				]
 			},
 			devOptions: {
-				enabled: true // Bật chế độ debug Service Worker khi chạy lệnh dev
+				enabled: true,
+				type: 'module',
 			}
 		}),
 	],
